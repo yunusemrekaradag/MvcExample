@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Layout.cshtml";
+}
+
+<h2>Edit Customer Page</h2>
+<form method="post">
+    <div>
+        <label>Customer Id</label>
+        <br />
+        <label name="id" class="form-label">@ViewBag.customer.id</label>
+    </div>
+    <div>
+        <label>Customer Name</label>
+        <input type="text" name="ad" class="form-control" value="@ViewBag.customer.ad" />
+    </div>
+    <br />
+    <div>
+        <button type="submit" class="btn btn-info">Kaydet</button>
+    </div>
+</form>

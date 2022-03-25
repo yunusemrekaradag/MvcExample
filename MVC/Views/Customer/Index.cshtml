@@ -1,0 +1,39 @@
+﻿@using System.Data.Entity
+@using MVC.Models
+
+@model List<Customers>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout.cshtml";
+}
+
+<h2>Customer Page</h2>
+<div style="text-align:right;">
+    <a href="/Customer/Add" class="btn btn-danger">Add Customer</a>
+</div>
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th>Customer Id</th>
+        <th>Customer Name</th>
+        <th>Customer Edit</th>
+        <th>Customer Delete</th>
+    </tr>
+    <tbody>
+        @foreach (Customers _customer in Model)
+        {
+            <tr>
+                <td>@_customer.id</td>
+                <td>@_customer.ad</td>
+                <td><a href="/Customer/Edit/@_customer.id"><img src="~/Images/edit.png" /></a></td>
+                <td>
+                    <a href="/Customer/Delete/@_customer.id">
+                        <img src="~/Images/delete.png" />
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

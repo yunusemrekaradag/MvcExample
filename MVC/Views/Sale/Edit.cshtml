@@ -1,0 +1,45 @@
+﻿@using MVC.Models
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Layout.cshtml";
+}
+
+<h2>Edit Sale Page</h2>
+<form method="post">
+    <div>
+        <label>Sale Id</label>
+        <br />
+        <label name="id" class="form-label">@ViewBag.sale.id</label>
+    </div>
+    <div>
+        <label>Quantity</label>
+        <input type="text" name="quantity" class="form-control" value="@ViewBag.sale.quantity" />
+    </div>
+    <div>
+        <label>Unit</label>
+        <input type="text" name="unit" class="form-control" value="@ViewBag.sale.unit" />
+    </div>
+    <div>
+        <label>Customer</label>
+
+        <select class="form-control" name="customer_id">
+            @foreach (Customers _customer in ViewBag.dataCustomers)
+            {
+                <option selected="@((_customer.id==ViewBag.sale.customer_id)? true: false)" value="@_customer.id">@_customer.ad</option>
+            }
+        </select>
+    </div>
+    <div>
+        <label>Product</label>
+        <select class="form-control" name="product_id">
+            @foreach (Products _product in ViewBag.dataProducts)
+            {
+                <option selected="@((_product.id==ViewBag.sale.product_id)? true: false)" value="@_product.id">@_product.ad</option>
+            }
+        </select>
+    </div>
+    <br />
+    <div>
+        <button type="submit" class="btn btn-danger">Kaydet</button>
+    </div>
+</form>

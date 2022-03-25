@@ -1,0 +1,39 @@
+﻿@using System.Data.Entity
+@using MVC.Models
+
+@model List<Products>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout.cshtml";
+}
+
+<h2>Product Page</h2>
+<div style="text-align:right;">
+    <a href="/Product/Add" class="btn btn-danger">Add Product</a>
+</div>
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th>Product Id</th>
+        <th>Product Name</th>
+        <th>Product Edit</th>
+        <th>Product Delete</th>
+    </tr>
+    <tbody>
+        @foreach (Products _product in Model)
+        {
+            <tr>
+                <td>@_product.id</td>
+                <td>@_product.ad</td>
+                <td><a href="/Product/Edit/@_product.id"><img src="~/Images/edit.png" /></a></td>
+                <td>
+                    <a href="/Product/Delete/@_product.id">
+                        <img src="~/Images/delete.png" />
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

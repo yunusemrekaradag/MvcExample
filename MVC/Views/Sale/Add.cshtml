@@ -1,0 +1,49 @@
+﻿@using MVC.Models
+
+@model Sales
+
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Layout.cshtml";
+}
+
+<h2>Add Sale Page</h2>
+<form method="post">
+    <div>
+        <label>Quantity</label>
+        <input type="text" name="quantity" class="form-control" />
+    </div>
+    <div>
+        <label>Unit</label>
+        <input type="text" name="unit" class="form-control" />
+    </div>
+    <div>
+        <label>Customer</label>
+        @*
+            param1:Modelde bind edilecek property name i.
+            param2: Action' dan dönen müşteri datası combobox a veriliyor.
+            param3: CSS class ı gibi property lere değer set edilen örnek kullanım.
+        *@
+        @Html.DropDownListFor(s => s.customer_id, (List<SelectListItem>)ViewBag.dataCustomers, new { @class = "form-control" })
+        @*<select class="form-control" name="customer_id">
+                @foreach (Customers _customer in ViewBag.dataCustomers)
+                {
+                    <option value="@_customer.id">@_customer.ad</option>
+                }
+            </select>*@
+    </div>
+    <div>
+        <label>Product</label>
+        <select class="form-control" name="product_id">
+            @foreach (Products _product in ViewBag.dataProducts)
+            {
+                <option value="@_product.id">@_product.ad</option>
+            }
+        </select>
+    </div>
+    <br />
+    <div>
+        <button type="submit" class="btn btn-danger">Kaydet</button>
+    </div>
+</form>
+
